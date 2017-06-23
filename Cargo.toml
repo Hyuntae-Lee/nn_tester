@@ -1,0 +1,6 @@
+[package]
+name = "nntester"
+version = "0.1.0"
+authors = ["Hyuntae-Lee <kkonchi@gmail.com>"]
+
+[dependencies]
