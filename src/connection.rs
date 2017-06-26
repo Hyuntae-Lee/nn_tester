@@ -25,6 +25,9 @@ impl Connection {
     pub fn weight(&self) -> f64 {
         self.weight
     }
+    pub fn add_weight(&mut self, value : f64) {
+        self.weight += value;
+    }
     pub fn prev_wd(&self) -> f64 {
         self.prev_weight_delta
     }
