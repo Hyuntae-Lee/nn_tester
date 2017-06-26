@@ -17,15 +17,18 @@ fn main() {
     ];
 
     let mut conn_list : Vec<Connection> = Vec::new();
-    conn_list.push(Connection::new(&node_list[0], &node_list[3], -0.07));
-    conn_list.push(Connection::new(&node_list[0], &node_list[4],  0.94));
-    conn_list.push(Connection::new(&node_list[1], &node_list[3],  0.22));
-    conn_list.push(Connection::new(&node_list[1], &node_list[4],  0.46));
-    conn_list.push(Connection::new(&node_list[2], &node_list[3], -0.46));
-    conn_list.push(Connection::new(&node_list[2], &node_list[4],  0.10));
-    conn_list.push(Connection::new(&node_list[3], &node_list[6], -0.22));
-    conn_list.push(Connection::new(&node_list[4], &node_list[6],  0.58));
-    conn_list.push(Connection::new(&node_list[5], &node_list[6],  0.78));
+    conn_list.push(Connection::new("i1".to_string(), "h1".to_string(), -0.07));
+    conn_list.push(Connection::new("i1".to_string(), "h2".to_string(),  0.94));
+    conn_list.push(Connection::new("i2".to_string(), "h1".to_string(),  0.22));
+    conn_list.push(Connection::new("i2".to_string(), "h2".to_string(),  0.46));
+    conn_list.push(Connection::new("b1".to_string(), "h1".to_string(), -0.46));
+    conn_list.push(Connection::new("b1".to_string(), "h2".to_string(),  0.10));
+    conn_list.push(Connection::new("h1".to_string(), "o1".to_string(), -0.22));
+    conn_list.push(Connection::new("h2".to_string(), "o1".to_string(),  0.58));
+    conn_list.push(Connection::new("b2".to_string(), "o1".to_string(),  0.78));
+
+    network::reset_node_list(&mut node_list);
+    network::walk_for_output(&mut node_list, &conn_list, 1.0, 0.0);
 
     for node in &node_list {
         println!("{}", node);
