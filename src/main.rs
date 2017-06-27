@@ -14,11 +14,11 @@ fn main() {
     let trainning_data_list : Vec<(f64, f64)> = sample_training_data();
     let test_data_list : Vec<(f64, f64)> = sample_input_data();
 
-    for _ in 0..100000 {
+    for _ in 0..200 {
         conn_list = network::walk_and_get_new_connection_list(&trainning_data_list, 0.7, 0.3,
             &mut conn_list, &mut node_list);
 
-        println!("error [{}]", calc_error_rate(&mut node_list, &conn_list, &test_data_list));
+        println!("error [{:.5}]", calc_error_rate(&mut node_list, &conn_list, &test_data_list));
     }
 }
 
@@ -36,26 +36,16 @@ fn calc_error_rate(node_list : &mut Vec<Node>, conn_list : &Vec<Connection>,
 }
 
 fn sample_training_data() -> Vec<(f64, f64)> {
-    let mut data : Vec<(f64, f64)> = Vec::new();
-
-    let mut rng = rand::thread_rng();
-    for _ in 0..100 {
-        let x_f = (rng.gen::<u32>() % 100) as f64 / 100.0;
-        let y_f = (rng.gen::<u32>() % 100) as f64 / 100.0;
-
-        data.push((x_f, y_f));
-    }
-
-    return data;
+    vec![(1.0, 0.0), (1.0, 1.0), (0.0, 1.0), (0.0, 0.0)]
 }
 
 fn sample_input_data() -> Vec<(f64, f64)> {
     let mut data : Vec<(f64, f64)> = Vec::new();
 
     let mut rng = rand::thread_rng();
-    for _ in 0..100 {
-        let x_f = (rng.gen::<u32>() % 100) as f64 / 100.0;
-        let y_f = (rng.gen::<u32>() % 100) as f64 / 100.0;
+    for _ in 0..1000 {
+        let x_f = (rng.gen::<u32>() % 2) as f64;
+        let y_f = (rng.gen::<u32>() % 2) as f64;
 
         data.push((x_f, y_f));
     }
