@@ -14,7 +14,7 @@ fn main() {
     let trainning_data_list : Vec<(f64, f64)> = sample_training_data();
     let test_data_list : Vec<(f64, f64)> = sample_input_data();
 
-    for _ in 0..10 {
+    for _ in 0..100000 {
         conn_list = network::walk_and_get_new_connection_list(&trainning_data_list, 0.7, 0.3,
             &mut conn_list, &mut node_list);
 

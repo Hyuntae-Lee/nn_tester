@@ -99,12 +99,6 @@ pub fn reset_node_list(node_list : &mut Vec<Node>) {
     }
 }
 
-pub fn reset_conn_list(conn_list : &mut Vec<Connection>) {
-    for conn in conn_list {
-        conn.reset_weight_delta_history();
-    }
-}
-
 pub fn calc_output(node : &Node) -> f64 {
     match *node.node_type() {
         NodeType::Hidden => {

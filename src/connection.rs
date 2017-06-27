@@ -34,9 +34,6 @@ impl Connection {
     pub fn set_prev_wd(&mut self, value : f64) {
         self.prev_weight_delta = value
     }
-    pub fn reset_weight_delta_history(&mut self) {
-        self.prev_weight_delta = 0.0
-    }
 }
 
 impl Clone for Connection {
