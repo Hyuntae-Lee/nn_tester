@@ -1,7 +1,5 @@
 extern crate rand;
 
-mod network;
-mod layer;
 mod connection;
 mod node;
 mod lib1;
@@ -9,42 +7,8 @@ mod lib1;
 use rand::Rng;
 use node::{Node, NodeType};
 use connection::Connection;
-use network::Network;
-use layer::{Layer, LayerType};
 
 fn main() {
-    // node
-    let i1 = Node::new("i1", NodeType::Input_1, 0.0);
-    let i2 = Node::new("i2", NodeType::Input_2, 0.0);
-    let b1 = Node::new("b1", NodeType::InputBias, 1.0);
-    let h1 = Node::new("h1", NodeType::Hidden, 0.0);
-    let h2 = Node::new("h2", NodeType::Hidden, 0.0);
-    let b2 = Node::new("b2", NodeType::HiddenBias, 1.0);
-    let o1 = Node::new("o1", NodeType::Output, 0.0);
-    // layer
-    // - input layer
-    let mut input_layer = Layer::new("li", LayerType::Input);
-    input_layer.add_node(&i1);
-    input_layer.add_node(&i2);
-    input_layer.add_node(&b1);
-    // - hidden layer
-    let mut hidden_layer = Layer::new("lh", LayerType::Hidden);
-    hidden_layer.add_node(&h1);
-    hidden_layer.add_node(&h2);
-    hidden_layer.add_node(&b2);
-    // - output layer
-    let mut output_layer = Layer::new("lo", LayerType::Output);
-    output_layer.add_node(&o1);
-    // netwrok
-    let mut network = Network::new();
-    network.add_layer(&input_layer);
-    network.add_layer(&hidden_layer);
-    network.add_layer(&output_layer);
-
-
-}
-
-fn main_old() {
     let mut node_list : Vec<Node> = sample_node_list();
     let mut conn_list : Vec<Connection> = sampel_conn_list();
     let trainning_data_list : Vec<(f64, f64)> = sample_training_data();
@@ -93,10 +57,10 @@ fn sample_node_list() -> Vec<Node> {
     vec![
         Node::new("i1", NodeType::Input_1, 0.0),
         Node::new("i2", NodeType::Input_2, 0.0),
-        Node::new("b1", NodeType::InputBias, 1.0),
+        Node::new("b1", NodeType::Bias, 1.0),
         Node::new("h1", NodeType::Hidden, 0.0),
         Node::new("h2", NodeType::Hidden, 0.0),
-        Node::new("b2", NodeType::HiddenBias, 1.0),
+        Node::new("b2", NodeType::Bias, 1.0),
         Node::new("o1", NodeType::Output, 0.0),
     ]
 }

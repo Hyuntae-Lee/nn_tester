@@ -4,10 +4,9 @@ use std::fmt;
 pub enum NodeType {
     Input_1,
     Input_2,
-    InputBias,
     Hidden,
-    HiddenBias,
     Output,
+    Bias,
 }
 
 pub struct Node {
