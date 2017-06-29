@@ -46,11 +46,8 @@ pub fn calc_error(input_1 : f64, input_2 : f64, output : f64) -> f64 {
 }
 
 pub fn answer(x : f64, y : f64) -> f64 {
-    // 중심 50, 50 반지름 40인 원의 내외부 여부
-    let x_c = x - 40.0;
-    let y_c = y - 40.0;
 
-    if x_c * x_c + y_c * y_c > 40.0 * 40.0 {
+    if x == y {
         0.0
     }
     else {

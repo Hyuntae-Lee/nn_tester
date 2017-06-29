@@ -14,11 +14,11 @@ fn main() {
     let trainning_data_list : Vec<(f64, f64)> = sample_training_data();
     let test_data_list : Vec<(f64, f64)> = sample_input_data();
 
-    for _ in 0..200 {
+    for i in 0..10 {
         conn_list = lib1::walk_and_get_new_connection_list(&trainning_data_list, 0.7, 0.3,
             &mut conn_list, &mut node_list);
 
-        println!("error [{:.5}]", calc_error_rate(&mut node_list, &conn_list, &test_data_list));
+        println!("#{} Error [{:.5}]", i, calc_error_rate(&mut node_list, &conn_list, &test_data_list));
     }
 }
 
